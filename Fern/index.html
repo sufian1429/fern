@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- คำสั่งบรรทัดล่างนี้คือตัวแก้ปัญหารูปแมวไม่ขึ้นครับ! -->
+    <meta name="referrer" content="no-referrer"> 
     <title>Happy Birthday! 🎂</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -136,8 +138,7 @@
         
         <div id="screen-intro" class="w-full flex flex-col items-center justify-center h-full absolute z-50 bg-[#fce4ec] top-0 left-0">
             <div class="mb-5">
-                <!-- เปลี่ยนลิงก์รูปแมวเริ่มต้นที่เสถียรขึ้น -->
-                <img id="main-gif" src="https://i.pinimg.com/originals/77/8e/71/778e718b53db7788102373801f9801ec.gif" alt="Cute Cat" class="w-[250px] rounded-2xl">
+                <img id="main-gif" src="https://media.tenor.com/ef305YvQJ_gAAAAi/mochi-peach.gif" alt="Cute Cat" class="w-[250px] rounded-2xl">
             </div>
             <h1 id="main-text" class="text-[#d81b60] text-3xl font-bold mb-2 px-5 text-center kanit-font">สุขสันต์วันเกิดน้าาา 🎂💕<br><small class="text-xl font-normal">13 กันยายน</small></h1>
             <p id="sub-text" class="text-[#880e4f] text-lg mb-8 px-5 kanit-font text-center">เป็นแฟนที่น่ารักแบบนี้ไปนานๆ นะ รักเค้ามั้ย? 👉👈</p>
@@ -253,8 +254,7 @@
             const noBtn = document.getElementById("no-btn");
             const yesBtn = document.getElementById("yes-btn");
             const gif = document.getElementById("main-gif");
-            // เปลี่ยนลิงก์รูปตอนกดปฏิเสธที่เสถียรขึ้น
-            gif.src = "https://i.pinimg.com/originals/c6/b5/0e/c6b50e48719bc41235b2a0958178d8a7.gif";
+            gif.src = "https://media.tenor.com/Z319qJ4t-c4AAAAi/peach-cat-crying.gif";
             noBtn.innerText = noTexts[noCount % noTexts.length];
             noCount++;
             yesSize += 0.4;
@@ -267,8 +267,7 @@
             const mainText = document.getElementById("main-text");
             const subText = document.getElementById("sub-text");
             const btnGroup = document.getElementById("btn-group");
-            // เปลี่ยนลิงก์รูปตอนกดตกลงที่เสถียรขึ้น
-            gif.src = "https://i.pinimg.com/originals/16/f8/33/16f8335dcdeeb2a7cb6b4020a6713e31.gif";
+            gif.src = "https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif";
             mainText.innerHTML = "เย้!! รักที่สู้ดดดด 🎉💖";
             subText.innerHTML = "แฮปปี้เบิร์ธเดย์นะคะที่รัก ขอให้มีความสุขมากๆ น้าา จุ๊บๆ 😘";
             btnGroup.style.display = "none";
