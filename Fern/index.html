@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Birthday! 🎂</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Sarabun:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fcf5f5;
+            --primary-text: #1a202c;
+            --accent-pink: #ff4d85;
+            --soft-pink: #ffb6c1;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: radial-gradient(circle at center, #fffafa 0%, #fdf0f4 100%);
+            margin: 0;
+            font-family: 'Sarabun', sans-serif;
+            color: var(--primary-text);
+            overflow: hidden; 
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1, h2, .serif-text {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .kanit-font {
+            font-family: 'Kanit', sans-serif;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        .fade-out {
+            animation: fadeOut 0.5s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(-10px); }
+        }
+
+        .heart-pulse {
+            animation: pulse 1.5s infinite;
+            filter: drop-shadow(0 15px 25px rgba(255, 20, 100, 0.4));
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+
+        .particles-container {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background-color: rgba(255, 182, 193, 0.4);
+            border-radius: 50%;
+            animation: float 8s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        .memory-card {
+            box-shadow: 0 10px 30px -10px rgba(200, 100, 150, 0.2);
+            border: 1px solid rgba(255, 182, 193, 0.5);
+        }
+        
+        .decorative-border {
+            position: relative;
+            padding: 8px;
+        }
+        .decorative-border::before, .decorative-border::after {
+            content: '';
+            position: absolute;
+            width: 30px; height: 30px;
+            border: 1px solid var(--soft-pink);
+            pointer-events: none;
+        }
+        .decorative-border::before { top: 0; left: 0; border-right: none; border-bottom: none; }
+        .decorative-border::after { bottom: 0; right: 0; border-left: none; border-top: none; }
+
+        .envelope-bg {
+            background-color: #ffd6e0;
+            background-image: radial-gradient(#ff8fa3 1.5px, transparent 1.5px);
+            background-size: 15px 15px;
+        }
+        
+        .envelope-flap {
+            clip-path: polygon(0 0, 100% 0, 100% 40%, 0 0);
+            background-color: rgba(255, 182, 193, 0.8);
+        }
+
+        .letter-paper {
+            background-color: #fffaf0;
+            background-image: linear-gradient(rgba(200, 150, 150, 0.05) 1px, transparent 1px);
+            background-size: 100% 2rem;
+            box-shadow: inset 0 0 30px rgba(255, 200, 200, 0.1);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+    
+    <div class="particles-container" id="particles"></div>
+
+    <div class="relative w-full max-w-md h-[100dvh] sm:h-[85vh] sm:border sm:border-pink-200 sm:rounded-3xl sm:shadow-2xl overflow-hidden bg-white/40 backdrop-blur-sm z-10 flex flex-col items-center justify-center p-6">
+        
+        <div id="screen-intro" class="w-full flex flex-col items-center justify-center h-full absolute z-50 bg-[#fce4ec] top-0 left-0">
+            <div class="mb-5">
+                <!-- เปลี่ยนลิงก์รูปแมวเริ่มต้นที่เสถียรขึ้น -->
+                <img id="main-gif" src="https://i.pinimg.com/originals/77/8e/71/778e718b53db7788102373801f9801ec.gif" alt="Cute Cat" class="w-[250px] rounded-2xl">
+            </div>
+            <h1 id="main-text" class="text-[#d81b60] text-3xl font-bold mb-2 px-5 text-center kanit-font">สุขสันต์วันเกิดน้าาา 🎂💕<br><small class="text-xl font-normal">13 กันยายน</small></h1>
+            <p id="sub-text" class="text-[#880e4f] text-lg mb-8 px-5 kanit-font text-center">เป็นแฟนที่น่ารักแบบนี้ไปนานๆ นะ รักเค้ามั้ย? 👉👈</p>
+            <div class="flex gap-4 items-center justify-center flex-wrap" id="btn-group">
+                <button class="kanit-font bg-[#ff4d6d] text-white px-8 py-3 rounded-xl text-lg font-bold shadow-[0_4px_15px_rgba(255,77,109,0.4)] hover:bg-[#ff3355] transition-all duration-200" id="yes-btn" onclick="handleYes()">รักสิ! 💖</button>
+                <button class="kanit-font bg-[#8d99ae] text-white px-8 py-3 rounded-xl text-lg font-bold hover:bg-[#7b889b] transition-all duration-200" id="no-btn" onclick="handleNo()">ไม่ 🥺</button>
+            </div>
+        </div>
+
+        <div id="screen-0" class="w-full flex flex-col items-center justify-center h-full text-center hidden absolute z-40">
+            <div class="mb-4 text-pink-500 font-medium tracking-widest text-sm flex items-center gap-2 uppercase">
+                💐 Happy Birthday
+            </div>
+            <h1 class="text-4xl sm:text-5xl font-bold text-gray-800 mb-12 leading-tight">สุขสันต์<br>วันเกิดนะคะ</h1>
+            <button onclick="nextScreen()" class="focus:outline-none bg-transparent border-none cursor-pointer transform transition active:scale-95">
+                <svg class="w-48 h-48 text-[#ff0a54] heart-pulse" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    <path d="M7 6.5A3.5 3.5 0 0 1 10.5 10" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.4"/>
+                </svg>
+            </button>
+            <p class="mt-16 text-gray-400 font-light tracking-wide animate-pulse">แตะที่หัวใจดูสิ</p>
+        </div>
+
+        <div id="screen-1" class="w-full flex flex-col items-center justify-center h-full hidden absolute w-full px-6 bg-white/60 backdrop-blur-md z-30 pb-10">
+            
+            <div class="relative w-full max-w-sm bg-white p-2 rounded-xl memory-card mb-8">
+                <div class="decorative-border">
+                    <img id="memory-img" src="images/367483.png" alt="Memory" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                
+                <button onclick="prevMemory()" class="absolute left-[-15px] top-1/2 transform -translate-y-1/2 bg-white rounded-full w-10 h-10 shadow-md flex items-center justify-center text-pink-500 hover:bg-pink-50 z-30 transition">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button onclick="nextMemory()" class="absolute right-[-15px] top-1/2 transform -translate-y-1/2 bg-white rounded-full w-10 h-10 shadow-md flex items-center justify-center text-pink-500 hover:bg-pink-50 z-30 transition">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="text-center w-full px-2">
+                <p class="text-pink-400 uppercase tracking-widest text-xs font-semibold mb-2" id="memory-counter">MEMORY 1 OF 12</p>
+                <h2 class="text-3xl font-bold text-gray-800 mb-4" id="memory-title">ความทรงจำ 1</h2>
+                
+                <div class="flex items-center justify-center gap-4 text-gray-500 text-sm mb-6">
+                    <span class="flex items-center gap-1"><i class="fa-regular fa-calendar"></i> <span id="memory-date">8 Jan 2024</span></span>
+                    <span>|</span>
+                    <span class="flex items-center gap-1"><i class="fa-solid fa-location-dot"></i> <span id="memory-location">ที่ไหนสักแห่ง</span></span>
+                </div>
+
+                <p class="text-gray-600 text-lg italic leading-relaxed text-center px-4" id="memory-quote">
+                    "จำได้ป่าว วันนี้สวยมากเลย พระอาทิตย์ตกสวยมาก แต่สวยที่สุดคือคนที่ยืนข้างๆ นะ 😊"
+                </p>
+                
+                <div class="mt-8 text-pink-400 text-xl animate-bounce">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+            </div>
+        </div>
+
+        <div id="screen-2" class="w-full flex flex-col items-center justify-center h-full hidden absolute bg-white/70 z-30">
+            <div onclick="nextScreen()" class="relative w-64 h-[400px] envelope-bg rounded-sm shadow-xl cursor-pointer transform transition hover:scale-105 active:scale-95 flex flex-col items-center justify-center border border-pink-200">
+                <div class="absolute top-0 left-0 w-full h-1/2 envelope-flap"></div>
+                <div class="absolute top-[35%] w-16 h-16 bg-[#d90429] rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.3)] flex items-center justify-center text-3xl border-2 border-[#ef233c] z-10">🌹</div>
+            </div>
+            <p class="mt-12 text-pink-500 tracking-widest text-lg font-medium animate-pulse">TAP TO OPEN</p>
+        </div>
+
+        <div id="screen-3" class="w-full flex flex-col h-full hidden absolute bg-white z-40 overflow-y-auto">
+            <div class="flex-1 w-full p-8 letter-paper flex flex-col">
+                <div class="text-left mb-6 text-2xl">💖✨</div>
+                <h1 class="text-3xl text-gray-800 font-bold mb-4 serif-text">Happy Birthday นะ! <br><span class="text-pink-500 text-xl font-medium font-sans">13 กันยายน 2541</span></h1>
+                <div class="text-left mb-6 text-xl">💕</div>
+                <div class="space-y-6 text-gray-700 text-lg leading-relaxed flex-1 italic">
+                    <p>ขอบคุณที่เข้ามาเป็นคนพิเศษในชีวิตเค้านะ</p>
+                    <p>ขอบคุณที่คอยอยู่ข้างๆ และเข้าใจเค้าเสมอ</p>
+                    <p>ปีนี้และทุกๆ ปี ขอให้เราได้อยู่ด้วยกันนะ ขอให้เธอมีความสุขมากๆ รอยยิ้มของเธอคือความสุขของเค้าเลย</p>
+                    <p>มาสร้างความทรงจำดีๆ และรักกันไปเรื่อยๆ กันนะ</p>
+                    <p class="text-xl text-pink-600 font-semibold not-italic">รักเธอมากๆ เลยยยยยย! 💖</p>
+                </div>
+                <div class="mt-10 pt-6 border-t border-pink-200 text-center">
+                    <p class="text-gray-400 uppercase tracking-widest text-sm mb-2">FROM YOUR CUTIE PIE,</p>
+                    <p class="text-2xl font-bold text-gray-800 serif-text">รักนะคะ 🎂</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const size = Math.random() * 8 + 4; 
+                const left = Math.random() * 100; 
+                const delay = Math.random() * 8; 
+                const duration = Math.random() * 6 + 6; 
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${left}%`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        const noTexts = ["แน่ใจหรอ?", "คิดดูดีๆ น้าา", "ใจร้ายยย", "ให้โอกาสตอบใหม่", "กดปุ่มสีชมพูเถอะ!", "ร้องไห้แล้วนะ 😭", "ยอมแล้วว รักเค้าเถอะ 💕"];
+        let noCount = 0;
+        let yesSize = 1.125; 
+
+        function handleNo() {
+            const noBtn = document.getElementById("no-btn");
+            const yesBtn = document.getElementById("yes-btn");
+            const gif = document.getElementById("main-gif");
+            // เปลี่ยนลิงก์รูปตอนกดปฏิเสธที่เสถียรขึ้น
+            gif.src = "https://i.pinimg.com/originals/c6/b5/0e/c6b50e48719bc41235b2a0958178d8a7.gif";
+            noBtn.innerText = noTexts[noCount % noTexts.length];
+            noCount++;
+            yesSize += 0.4;
+            yesBtn.style.fontSize = `${yesSize}rem`;
+            yesBtn.style.padding = `${yesSize * 10}px ${yesSize * 20}px`;
+        }
+
+        function handleYes() {
+            const gif = document.getElementById("main-gif");
+            const mainText = document.getElementById("main-text");
+            const subText = document.getElementById("sub-text");
+            const btnGroup = document.getElementById("btn-group");
+            // เปลี่ยนลิงก์รูปตอนกดตกลงที่เสถียรขึ้น
+            gif.src = "https://i.pinimg.com/originals/16/f8/33/16f8335dcdeeb2a7cb6b4020a6713e31.gif";
+            mainText.innerHTML = "เย้!! รักที่สู้ดดดด 🎉💖";
+            subText.innerHTML = "แฮปปี้เบิร์ธเดย์นะคะที่รัก ขอให้มีความสุขมากๆ น้าา จุ๊บๆ 😘";
+            btnGroup.style.display = "none";
+            setTimeout(() => {
+                const introScreen = document.getElementById("screen-intro");
+                introScreen.classList.add("fade-out");
+                setTimeout(() => {
+                    introScreen.classList.add("hidden"); 
+                    showScreen(0); 
+                }, 500); 
+            }, 2500);
+        }
+
+        let currentScreen = 0;
+        const totalScreens = 4; 
+
+        function showScreen(index) {
+            for (let i = 0; i < totalScreens; i++) {
+                const screen = document.getElementById(`screen-${i}`);
+                if (screen) {
+                    if (i === index) {
+                        screen.classList.remove('hidden');
+                        screen.classList.add('fade-in');
+                        screen.classList.remove('fade-out');
+                    } else if (!screen.classList.contains('hidden')) {
+                        screen.classList.add('hidden');
+                    }
+                }
+            }
+            currentScreen = index;
+        }
+
+        function nextScreen() {
+            if (currentScreen < totalScreens - 1) {
+                const currentEl = document.getElementById(`screen-${currentScreen}`);
+                currentEl.classList.remove('fade-in');
+                currentEl.classList.add('fade-out');
+                setTimeout(() => {
+                    showScreen(currentScreen + 1);
+                }, 400); 
+            }
+        }
+
+        const memories = [
+            {
+                img: "images/367483.png",
+                title: "ความทรงจำ 1",
+                date: "8 Jan 2024",
+                location: "ที่ไหนสักแห่ง",
+                quote: `"จำได้ป่าว วันนี้สวยมากเลย พระอาทิตย์ตกสวยมาก แต่สวยที่สุดคือคนที่ยืนข้างๆ นะ 😊"`
+            },
+            {
+                img: "images/367484.png",
+                title: "ความทรงจำ 2",
+                date: "14 Feb 2024",
+                location: "ร้านอาหาร",
+                quote: `"มื้อนี้อร่อยมากเลย ดีใจที่ได้มากินด้วยกันนะ"`
+            },
+            {
+                img: "images/367485.png",
+                title: "ความทรงจำ 3",
+                date: "25 Feb 2024",
+                location: "ชายหาด",
+                quote: `"ชอบมากเลยเวลาที่ได้ไปทะเลด้วยกัน ฟังเสียงคลื่นแล้วรู้สึกสงบดี 🌊"`
+            },
+            {
+                img: "images/367486.png",
+                title: "ความทรงจำ 4",
+                date: "3 Mar 2024",
+                location: "ค่ำคืน",
+                quote: `"คืนนี้สวยมากเลย ไฟสวย อาหารอร่อย แต่ที่สวยที่สุดคือเธอที่ยืนอยู่ตรงนี้ 💕"`
+            },
+            {
+                img: "images/367487.png",
+                title: "ความทรงจำ 5",
+                date: "10 Apr 2024",
+                location: "คาเฟ่",
+                quote: `"กาแฟร้านนี้อร่อยดีเนอะ ไว้วันหลังมาด้วยกันอีกนะ ☕"`
+            },
+            {
+                img: "images/367488.png",
+                title: "ความทรงจำ 6",
+                date: "5 May 2024",
+                location: "สวนสาธารณะ",
+                quote: `"เดินเล่นรับลมเย็นๆ สบายใจที่สุดเลย 🍃"`
+            },
+            {
+                img: "images/367489.png",
+                title: "ความทรงจำ 7",
+                date: "12 Jun 2024",
+                location: "ดูหนัง",
+                quote: `"หนังสนุกมากเลย แต่มองหน้าเธอสนุกกว่า 🍿"`
+            },
+            {
+                img: "images/367490.png",
+                title: "ความทรงจำ 8",
+                date: "20 Jul 2024",
+                location: "ช้อปปิ้ง",
+                quote: `"เดินจนเมื่อยเลย แต่ก็มีความสุขที่ได้เดินด้วยกัน 🛍️"`
+            },
+            {
+                img: "images/367491.png",
+                title: "ความทรงจำ 9",
+                date: "8 Aug 2024",
+                location: "ทำอาหาร",
+                quote: `"ช่วยกันทำอาหาร สนุกดีเนอะ ถึงจะไหม้ไปนิดนึงก็เถอะ 🍳"`
+            },
+            {
+                img: "images/367492.png",
+                title: "ความทรงจำ 10",
+                date: "25 Aug 2024",
+                location: "อยู่บ้าน",
+                quote: `"แค่นั่งดูซีรีส์ด้วยกันที่บ้าน ก็เป็นวันหยุดที่ดีที่สุดแล้ว 📺"`
+            },
+            {
+                img: "images/367493.png",
+                title: "ความทรงจำ 11",
+                date: "1 Sep 2024",
+                location: "ถ่ายรูปเล่น",
+                quote: `"ยิ้มหน่อยๆ น่ารักจังเลยกล้องนี้ 📸"`
+            },
+            {
+                img: "images/367494.png",
+                title: "ความทรงจำ 12",
+                date: "9 Sep 2024",
+                location: "ใกล้ถึงวันเกิด",
+                quote: `"เตรียมตัวต้อนรับวันเกิดคนเก่งของเค้าแล้วนะ 🎉"`
+            }
+        ];
+
+        let currentMemIndex = 0;
+
+        function updateMemoryDOM() {
+            const mem = memories[currentMemIndex];
+            const container = document.getElementById('memory-title').parentElement;
+            container.style.opacity = '0';
+            document.getElementById('memory-img').style.opacity = '0.5';
+            
+            setTimeout(() => {
+                document.getElementById('memory-img').src = mem.img;
+                document.getElementById('memory-counter').innerText = `MEMORY ${currentMemIndex + 1} OF ${memories.length}`;
+                document.getElementById('memory-title').innerText = mem.title;
+                document.getElementById('memory-date').innerText = mem.date;
+                document.getElementById('memory-location').innerText = mem.location;
+                document.getElementById('memory-quote').innerText = mem.quote;
+                
+                container.style.transition = 'opacity 0.4s';
+                document.getElementById('memory-img').style.transition = 'opacity 0.4s';
+                container.style.opacity = '1';
+                document.getElementById('memory-img').style.opacity = '1';
+            }, 200);
+        }
+
+        function nextMemory() {
+            if (currentMemIndex < memories.length - 1) {
+                currentMemIndex++;
+                updateMemoryDOM();
+            } else {
+                nextScreen();
+            }
+        }
+
+        function prevMemory() {
+            if (currentMemIndex > 0) {
+                currentMemIndex--;
+                updateMemoryDOM();
+            }
+        }
+    </script>
+</body>
+</html>
