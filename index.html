@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- คำสั่งบรรทัดล่างนี้คือตัวแก้ปัญหารูปแมวไม่ขึ้นครับ! -->
     <meta name="referrer" content="no-referrer"> 
     <title>Happy Birthday! 🎂</title>
     
@@ -134,16 +133,15 @@
     
     <div class="particles-container" id="particles"></div>
 
-    <div class="relative w-full max-w-md h-[100dvh] sm:h-[85vh] sm:border sm:border-pink-200 sm:rounded-3xl sm:shadow-2xl overflow-hidden bg-white/40 backdrop-blur-sm z-10 flex flex-col items-center justify-center p-6">
+    <div class="relative w-full max-w-md h-[100dvh] sm:h-[95vh] sm:max-h-[900px] sm:border sm:border-pink-200 sm:rounded-3xl sm:shadow-2xl overflow-hidden bg-white/40 backdrop-blur-sm z-10 flex flex-col items-center justify-center p-6">
         
-        <div id="screen-intro" class="w-full flex flex-col items-center justify-center h-full absolute z-50 bg-[#fce4ec] top-0 left-0">
-            <div class="mb-5">
-    <!-- เปลี่ยน src เป็นรูปในเครื่องของคุณ และปรับขนาดความกว้าง/สูงตามต้องการ -->
-                    <img id="main-gif" src="images/367488.png" alt="My Love" class="w-48 h-48 object-cover rounded-full shadow-lg border-4 border-white">
+        <div id="screen-intro" class="w-full flex flex-col items-center justify-center h-full absolute z-50 bg-[#fce4ec] top-0 left-0 overflow-y-auto">
+            <div class="mb-5 mt-8">
+                <img id="main-gif" src="images/367488.png" alt="My Love" class="w-48 h-48 object-cover rounded-full shadow-lg border-4 border-white">
             </div>
             <h1 id="main-text" class="text-[#d81b60] text-3xl font-bold mb-2 px-5 text-center kanit-font">สุขสันต์วันเกิดน้าาา 🎂💕<br><small class="text-xl font-normal">13 กันยายน</small></h1>
             <p id="sub-text" class="text-[#880e4f] text-lg mb-8 px-5 kanit-font text-center">เป็นแฟนที่น่ารักแบบนี้ไปนานๆ นะ รักเค้ามั้ย? 👉👈</p>
-            <div class="flex gap-4 items-center justify-center flex-wrap" id="btn-group">
+            <div class="flex gap-4 items-center justify-center flex-wrap mb-10" id="btn-group">
                 <button class="kanit-font bg-[#ff4d6d] text-white px-8 py-3 rounded-xl text-lg font-bold shadow-[0_4px_15px_rgba(255,77,109,0.4)] hover:bg-[#ff3355] transition-all duration-200" id="yes-btn" onclick="handleYes()">รักสิ! 💖</button>
                 <button class="kanit-font bg-[#8d99ae] text-white px-8 py-3 rounded-xl text-lg font-bold hover:bg-[#7b889b] transition-all duration-200" id="no-btn" onclick="handleNo()">ไม่ 🥺</button>
             </div>
@@ -163,9 +161,9 @@
             <p class="mt-16 text-gray-400 font-light tracking-wide animate-pulse">แตะที่หัวใจดูสิ</p>
         </div>
 
-        <div id="screen-1" class="w-full flex flex-col items-center justify-center h-full hidden absolute w-full px-6 bg-white/60 backdrop-blur-md z-30 pb-10">
+        <div id="screen-1" class="w-full flex flex-col items-center justify-start h-full hidden absolute px-6 bg-white/60 backdrop-blur-md z-30 py-8 overflow-y-auto">
             
-            <div class="relative w-full max-w-sm bg-white p-2 rounded-xl memory-card mb-8">
+            <div class="relative w-full max-w-sm bg-white p-2 rounded-xl memory-card mb-6 mt-4">
                 <div class="decorative-border">
                     <img id="memory-img" src="images/367483.png" alt="Memory" class="w-full h-64 object-cover rounded-lg">
                 </div>
@@ -178,12 +176,12 @@
                 </button>
             </div>
 
-            <div class="text-center w-full px-2">
-                <p class="text-pink-400 uppercase tracking-widest text-xs font-semibold mb-2" id="memory-counter">MEMORY 1 OF 12</p>
+            <div class="text-center w-full px-2 pb-6">
+                <p class="text-pink-400 uppercase tracking-widest text-xs font-semibold mb-2" id="memory-counter">MEMORY 1 OF 11</p>
                 <h2 class="text-3xl font-bold text-gray-800 mb-4" id="memory-title">ความทรงจำ 1</h2>
                 
                 <div class="flex items-center justify-center gap-4 text-gray-500 text-sm mb-6">
-                    <!-- <span class="flex items-center gap-1"><i class="fa-regular fa-calendar"></i> <span id="memory-date">8 Jan 2024</span></span> -->
+                    <span class="flex items-center gap-1"><i class="fa-regular fa-calendar"></i> <span id="memory-date">8 Jan 2024</span></span>
                     <span>|</span>
                     <span class="flex items-center gap-1"><i class="fa-solid fa-location-dot"></i> <span id="memory-location">ที่ไหนสักแห่ง</span></span>
                 </div>
@@ -192,7 +190,7 @@
                     "จำได้ป่าว วันนี้สวยมากเลย พระอาทิตย์ตกสวยมาก แต่สวยที่สุดคือคนที่ยืนข้างๆ นะ 😊"
                 </p>
                 
-                <div class="mt-8 text-pink-400 text-xl animate-bounce">
+                <div class="mt-6 text-pink-400 text-xl animate-bounce">
                     <i class="fa-solid fa-heart"></i>
                 </div>
             </div>
@@ -255,7 +253,8 @@
             const noBtn = document.getElementById("no-btn");
             const yesBtn = document.getElementById("yes-btn");
             const gif = document.getElementById("main-gif");
-            gif.src = "https://media.tenor.com/Z319qJ4t-c4AAAAi/peach-cat-crying.gif";
+            // หากคุณต้องการให้ตอนกดไม่แล้วรูปเปลี่ยนเป็นแมวร้องไห้เหมือนเดิม สามารถเปลี่ยน src ตรงนี้กลับเป็นแมวร้องไห้ได้ครับ
+            // gif.src = "https://media.tenor.com/Z319qJ4t-c4AAAAi/peach-cat-crying.gif";
             noBtn.innerText = noTexts[noCount % noTexts.length];
             noCount++;
             yesSize += 0.4;
@@ -268,7 +267,10 @@
             const mainText = document.getElementById("main-text");
             const subText = document.getElementById("sub-text");
             const btnGroup = document.getElementById("btn-group");
-            gif.src = "https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif";
+            
+            // ตอนกดตอบตกลงก็เปลี่ยนรูปได้เช่นกัน
+            // gif.src = "https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif";
+            
             mainText.innerHTML = "เย้!! รักที่สู้ดดดด 🎉💖";
             subText.innerHTML = "แฮปปี้เบิร์ธเดย์นะคะที่รัก ขอให้มีความสุขมากๆ น้าา จุ๊บๆ 😘";
             btnGroup.style.display = "none";
@@ -364,21 +366,21 @@
             },
             {
                 img: "images/367494.png",
-                title: "ความทรงจำ 11",
+                title: "ความทรงจำ 8",
                 date: "1 May 2026",
                 location: "เขื่อนเชี่ยวหลาน",
                 quote: `"เล่นน้ำด้วยกัน"`
             },
             {
                 img: "images/367491.png",
-                title: "ความทรงจำ 8",
+                title: "ความทรงจำ 9",
                 date: "11 Sep 2026",
                 location: "ไปสนามบิน",
                 quote: `"นั่งรถครั้งแรก Airport bus"`
             },
             {
                 img: "images/367492.png",
-                title: "ความทรงจำ 9",
+                title: "ความทรงจำ 10",
                 date: "12 Sep 2026",
                 location: "สถานที่แห่งหนึ่งในเชียงใหม่",
                 quote: `"ถ่ายรูปเล่น"`
@@ -389,9 +391,7 @@
                 date: "12 Sep 2026",
                 location: "แม่กำปอง",
                 quote: `"ยิ้มหน่อยๆ น่ารักจังเลยกล้องนี้ 📸"`
-            },
-            
-            
+            }
         ];
 
         let currentMemIndex = 0;
